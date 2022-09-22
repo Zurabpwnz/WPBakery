@@ -1,0 +1,517 @@
+<?php
+/**
+ * Product
+ *
+ * Create a Product in WPBakery
+ *
+ * @category   Wordpress
+ * @since      Class available since Release 1.0.0
+ */
+
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+if ( ! class_exists( 'VcZShProduct' ) ) {
+
+	class VcZShProduct extends WPBakeryShortCode {
+
+		function __construct() {
+			add_action( 'init', array( $this, 'create_shortcode' ), 999 );
+			add_shortcode( 'vc_zsh_Product', array( $this, 'render_shortcode' ) );
+		}
+
+		public function create_shortcode() {
+			// Stop all if VC is not enabled
+			if ( ! defined( 'WPB_VC_VERSION' ) ) {
+				return;
+			}
+
+			// Map Product with vc_map()
+			vc_map( array(
+				'name'        => __( 'Product', 'shyvarbidze' ),
+				'base'        => 'vc_zsh_Product',
+				'description' => __( '', 'shyvarbidze' ),
+				'category'    => __( 'Shyvarbidze Pro', 'shyvarbidze' ),
+				'params'      => array(
+
+					array(
+						'type'        => 'attach_image',
+						'holder'      => 'div',
+						'heading'     => __( 'Изображение', 'shyvarbidze' ),
+						'param_name'  => 'product_image',
+						'value'       => __( '', 'shyvarbidze' ),
+						'description' => __( 'Добавьте изображение товара', 'shyvarbidze' ),
+					),
+
+					array(
+						'type'        => 'textfield',
+						'holder'      => 'div',
+						'heading'     => __( 'Заголовок', 'shyvarbidze' ),
+						'param_name'  => 'product_title',
+						'value'       => __( '', 'shyvarbidze' ),
+						'description' => __( 'Добавьте заголовок товара', 'shyvarbidze' ),
+					),
+
+					array(
+						'type'        => 'textfield',
+						'holder'      => 'div',
+						'heading'     => __( 'Лейба товара', 'shyvarbidze' ),
+						'param_name'  => 'product_label',
+						'value'       => __( '', 'shyvarbidze' ),
+						'description' => __( 'Добавьте заголовок товара', 'shyvarbidze' ),
+					),
+
+					array(
+						"type"        => "textarea_html",
+						"holder"      => "div",
+						"class"       => "",
+						"heading"     => __( "Описание товара", 'shyvarbidze' ),
+						"param_name"  => "content",
+						// Important: Only one textarea_html param per content element allowed and it should have "content" as a "param_name"
+						"value"       => __( "<p>lorem</p>", 'shyvarbidze' ),
+						"description" => __( "Введите текст", 'shyvarbidze' )
+					),
+
+					array(
+						'type'        => 'textfield',
+						'holder'      => 'div',
+						'heading'     => __( 'Форма товара', 'shyvarbidze' ),
+						'param_name'  => 'product_form',
+						'value'       => __( '', 'shyvarbidze' ),
+						'description' => __( 'Добавьте форму товара', 'shyvarbidze' ),
+					),
+
+					array(
+						'type'        => 'textfield',
+						'holder'      => 'div',
+						'heading'     => __( 'Ширина товара', 'shyvarbidze' ),
+						'param_name'  => 'product_weight',
+						'value'       => __( '', 'shyvarbidze' ),
+						'description' => __( 'Добавьте ширину товара', 'shyvarbidze' ),
+					),
+
+					array(
+						'type'        => 'textfield',
+						'holder'      => 'div',
+						'heading'     => __( 'Высота товара', 'shyvarbidze' ),
+						'param_name'  => 'product_height',
+						'value'       => __( '', 'shyvarbidze' ),
+						'description' => __( 'Добавьте ширину товара', 'shyvarbidze' ),
+					),
+
+					array(
+						'type'        => 'textfield',
+						'holder'      => 'div',
+						'heading'     => __( 'Каркас', 'shyvarbidze' ),
+						'param_name'  => 'product_karkas',
+						'value'       => __( '', 'shyvarbidze' ),
+						'description' => __( 'Добавьте каркас товара', 'shyvarbidze' ),
+					),
+
+					array(
+						'type'        => 'textarea',
+						'holder'      => 'div',
+						'heading'     => __( 'Производитель', 'shyvarbidze' ),
+						'param_name'  => 'product_manufacturer',
+						'value'       => __( '', 'shyvarbidze' ),
+						'description' => __( 'Добавьте производителя товара', 'shyvarbidze' ),
+					),
+
+					array(
+						'type'        => 'textarea',
+						'holder'      => 'div',
+						'heading'     => __( 'Место нахождения', 'shyvarbidze' ),
+						'param_name'  => 'product_place',
+						'value'       => __( '', 'shyvarbidze' ),
+						'description' => __( 'Добавьте место нахождения', 'shyvarbidze' ),
+					),
+
+					array(
+						'type'        => 'textfield',
+						'holder'      => 'div',
+						'heading'     => __( 'Гарантийный срок', 'shyvarbidze' ),
+						'param_name'  => 'product_varanty',
+						'value'       => __( '', 'shyvarbidze' ),
+						'description' => __( 'Добавьте гарантийный срок товара', 'shyvarbidze' ),
+					),
+
+					array(
+						'type'        => 'param_group',
+						'value'       => '',
+						'heading'     => esc_html__( 'Длина', 'elem' ),
+						'param_name'  => 'product_length_list',
+						'params'      => array(
+							array(
+								'type'       => 'textfield',
+								'value'      => '',
+								'heading'    => esc_html__( 'Размер', 'elem' ),
+								'param_name' => 'size',
+							),
+						),
+						'description' => __( 'Добавьте список длин товара', 'shyvarbidze' ),
+					),
+
+					array(
+						'type'        => 'param_group',
+						'value'       => '',
+						'heading'     => esc_html__( 'Шаг', 'elem' ),
+						'param_name'  => 'product_step_list',
+						'params'      => array(
+							array(
+								'type'       => 'textfield',
+								'value'      => '',
+								'heading'    => esc_html__( 'Размер', 'elem' ),
+								'param_name' => 'size',
+							),
+						),
+						'description' => __( 'Добавьте список длин товара', 'shyvarbidze' ),
+					),
+
+
+					// Price
+					// 4
+					array(
+						'type'        => 'textfield',
+						'heading'     => __( '4*1', 'shyvarbidze' ),
+						'param_name'  => 'size_4_1',
+						'admin_label' => false,
+						'std'         => '', // Your default value
+						'description' => __( 'Длина 4м, Шаг 1м' ),
+						'group'       => 'Цена'
+					),
+
+					array(
+						'type'        => 'textfield',
+						'heading'     => __( '4*0.67', 'shyvarbidze' ),
+						'param_name'  => 'size_4_067',
+						'admin_label' => true,
+						'std'         => '', // Your default value
+						'description' => __( 'Длина 4м, Шаг 0.67м' ),
+						'group'       => 'Цена'
+					),
+
+					array(
+						'type'        => 'textfield',
+						'heading'     => __( '4*0.5', 'shyvarbidze' ),
+						'param_name'  => 'size_4_05',
+						'admin_label' => true,
+						'std'         => '', // Your default value
+						'description' => __( 'Длина 4м, Шаг 0.5м' ),
+						'group'       => 'Цена'
+					),
+
+
+					// 6
+					array(
+						'type'        => 'textfield',
+						'heading'     => __( '6*1', 'shyvarbidze' ),
+						'param_name'  => 'size_6_1',
+						'admin_label' => true,
+						'std'         => '', // Your default value
+						'description' => __( 'Длина 6м, Шаг 1м' ),
+						'group'       => 'Цена'
+					),
+
+					array(
+						'type'        => 'textfield',
+						'heading'     => __( '6*0.67', 'shyvarbidze' ),
+						'param_name'  => 'size_6_067',
+						'admin_label' => true,
+						'std'         => '', // Your default value
+						'description' => __( 'Длина 6м, Шаг 0.67м' ),
+						'group'       => 'Цена'
+					),
+
+					array(
+						'type'        => 'textfield',
+						'heading'     => __( '6*0.5', 'shyvarbidze' ),
+						'param_name'  => 'size_6_05',
+						'admin_label' => true,
+						'std'         => '', // Your default value
+						'description' => __( 'Длина 6м, Шаг 0.5м' ),
+						'group'       => 'Цена'
+					),
+
+					// 8
+					array(
+						'type'        => 'textfield',
+						'heading'     => __( '8*1', 'shyvarbidze' ),
+						'param_name'  => 'size_8_1',
+						'admin_label' => true,
+						'std'         => '', // Your default value
+						'description' => __( 'Длина 8м, Шаг 1м' ),
+						'group'       => 'Цена'
+					),
+
+					array(
+						'type'        => 'textfield',
+						'heading'     => __( '8*0.67', 'shyvarbidze' ),
+						'param_name'  => 'size_8_067',
+						'admin_label' => true,
+						'std'         => '', // Your default value
+						'description' => __( 'Длина 8м, Шаг 0.67м' ),
+						'group'       => 'Цена'
+					),
+
+					array(
+						'type'        => 'textfield',
+						'heading'     => __( '8*0.5', 'shyvarbidze' ),
+						'param_name'  => 'size_8_05',
+						'std'         => '', // Your default value
+						'description' => __( 'Длина 8м, Шаг 0.5м' ),
+						'group'       => 'Цена'
+					),
+
+					// 10
+					array(
+						'type'        => 'textfield',
+						'heading'     => __( '10*1', 'shyvarbidze' ),
+						'param_name'  => 'size_10_1',
+						'std'         => '', // Your default value
+						'description' => __( 'Длина 10м, Шаг 1м' ),
+						'group'       => 'Цена'
+					),
+
+					array(
+						'type'        => 'textfield',
+						'heading'     => __( '10*0.67', 'shyvarbidze' ),
+						'param_name'  => 'size_10_067',
+						'std'         => '', // Your default value
+						'description' => __( 'Длина 10м, Шаг 0.67м' ),
+						'group'       => 'Цена'
+					),
+
+					array(
+						'type'        => 'textfield',
+						'heading'     => __( '10*0.5', 'shyvarbidze' ),
+						'param_name'  => 'size_10_05',
+						'std'         => '', // Your default value
+						'description' => __( 'Длина 10м, Шаг 0.5м' ),
+						'group'       => 'Цена'
+					),
+
+
+					// class & id
+					array(
+						'type'        => 'textfield',
+						'heading'     => __( 'Element ID', 'shyvarbidze' ),
+						'param_name'  => 'element_id',
+						'value'       => __( '', 'shyvarbidze' ),
+						'description' => __( 'Enter element ID (Note: make sure it is unique and valid).', 'shyvarbidze' ),
+						'group'       => __( 'Extra', 'shyvarbidze' ),
+					),
+
+					array(
+						'type'        => 'textfield',
+						'heading'     => __( 'Extra class name', 'shyvarbidze' ),
+						'param_name'  => 'extra_class',
+						'value'       => __( '', 'shyvarbidze' ),
+						'description' => __( 'Style particular content element differently - add a class name and refer to it in custom CSS.', 'shyvarbidze' ),
+						'group'       => __( 'Extra', 'shyvarbidze' ),
+					),
+				),
+			) );
+
+		}
+
+		public function render_shortcode( $atts, $content, $tag ) {
+			$atts = ( shortcode_atts( array(
+				'product_title'        => '',
+				'product_label'        => '',
+				'product_image'        => '',
+				'product_form'         => '',
+				'product_weight'       => '',
+				'product_height'       => '',
+				'product_karkas'       => '',
+				'product_manufacturer' => '',
+				'product_place'        => '',
+				'product_varanty'      => '',
+				'product_price'        => '',
+				'product_length_list'  => '',
+				'product_step_list'    => '',
+
+				'extra_class' => '',
+				'element_id'  => ''
+			), $atts ) );
+
+
+			//Content
+			$content              = wpb_js_remove_wpautop( $content, true );
+			$product_title        = esc_html( $atts['product_title'] );
+			$product_image        = esc_html( $atts['product_image'] );
+			$product_label        = esc_html( $atts['product_label'] );
+			$product_form         = esc_html( $atts['product_form'] );
+			$product_weight       = esc_html( $atts['product_weight'] );
+			$product_height       = esc_html( $atts['product_height'] );
+			$product_karkas       = esc_html( $atts['product_karkas'] );
+			$product_manufacturer = esc_html( $atts['product_manufacturer'] );
+			$product_place        = esc_html( $atts['product_place'] );
+			$product_varanty      = esc_html( $atts['product_varanty'] );
+			$product_length_list  = vc_param_group_parse_atts( $atts['product_length_list'] );
+			$product_step_list    = vc_param_group_parse_atts( $atts['product_step_list'] );
+
+			//Class and Id
+			$extra_class = esc_attr( $atts['extra_class'] );
+			$element_id  = esc_attr( $atts['element_id'] );
+
+
+			// Image
+			$img = wp_get_attachment_image( $product_image, 'full' );
+
+
+			// Rand
+			$str    = rand( 1, 1000 );
+			$result = md5( $str );
+
+
+			// OutPut
+			ob_start(); ?>
+
+            <div class="card-item" id="' . $element_id . '">
+                <div class="catalog__card">
+                    <div class="catalog__card__img catalog__card-top"><?php echo $img; ?></div>
+                    <div class="catalog__card__body card-body">
+                        <h5 class="card-title"><?php echo $product_title; ?></h5>
+                        <div class="card-label"><?php echo $product_label; ?></div>
+                        <div class="card-text"><?php echo $content; ?></div>
+
+                        <div class="card-info">
+                            <div class="card-info-characteristics">
+                                <div class="card-info-characteristics-item">
+                                            <span class="card-info-characteristics-item-icon">
+                                            <svg class="svg-inline--fa fa-igloo fa-w-18" aria-hidden="true"
+                                                 focusable="false" data-prefix="fas" data-icon="igloo" role="img"
+                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                                 data-fa-i2svg=""><path fill="currentColor"
+                                                                        d="M320 33.9c-10.5-1.2-21.2-1.9-32-1.9-99.8 0-187.8 50.8-239.4 128H320V33.9zM96 192H30.3C11.1 230.6 0 274 0 320h96V192zM352 39.4V160h175.4C487.2 99.9 424.8 55.9 352 39.4zM480 320h96c0-46-11.1-89.4-30.3-128H480v128zm-64 64v96h128c17.7 0 32-14.3 32-32v-96H411.5c2.6 10.3 4.5 20.9 4.5 32zm32-192H128v128h49.8c22.2-38.1 63-64 110.2-64s88 25.9 110.2 64H448V192zM0 448c0 17.7 14.3 32 32 32h128v-96c0-11.1 1.9-21.7 4.5-32H0v96zm288-160c-53 0-96 43-96 96v96h192v-96c0-53-43-96-96-96z"></path></svg>
+                                                <!-- <i class="fas fa-igloo"></i> Font Awesome fontawesome.com --></span>
+                                    <span>Форма: <?php echo $product_form; ?></span>
+                                </div>
+                                <div class="card-info-characteristics-item">
+                                            <span class="card-info-characteristics-item-icon">
+                                                <svg class="svg-inline--fa fa-arrows-alt-h fa-w-16" aria-hidden="true"
+                                                     focusable="false" data-prefix="fas" data-icon="arrows-alt-h"
+                                                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                                     data-fa-i2svg=""><path fill="currentColor"
+                                                                            d="M377.941 169.941V216H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.568 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296h243.882v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.568 0-33.941l-86.059-86.059c-15.119-15.12-40.971-4.412-40.971 16.97z"></path></svg>
+                                                <!-- <i class="fas fa-arrows-alt-h"></i> Font Awesome fontawesome.com -->
+                                            </span>
+                                    <span>Ширина: <?php echo $product_weight; ?>м</span>
+                                </div>
+                                <div class="card-info-characteristics-item">
+                                            <span class="card-info-characteristics-item-icon">
+                                                <svg class="svg-inline--fa fa-arrows-alt-v fa-w-8" aria-hidden="true"
+                                                     focusable="false" data-prefix="fas" data-icon="arrows-alt-v"
+                                                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"
+                                                     data-fa-i2svg=""><path fill="currentColor"
+                                                                            d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"></path></svg>
+                                                <!-- <i class="fas fa-arrows-alt-v"></i> Font Awesome fontawesome.com -->
+                                            </span>
+                                    <span>Высота: <?php echo $product_height; ?>м</span>
+                                </div>
+                            </div>
+                            <div class="card-info-carcass">
+                                <p>Каркас: <br><?php echo $product_karkas; ?></p>
+
+                                <p>Производитель: <?php echo $product_manufacturer; ?><br>
+                                    место нахождения: <?php echo $product_place; ?><br>
+                                    Гарантийный срок: <?php echo $product_varanty; ?></p>
+
+                            </div>
+                        </div>
+                        <div class="catalog__parameter">
+                            <div class="catalog__parameter-name">
+                                <span>Длина:</span>
+                            </div>
+
+							<?php foreach ( $product_length_list as $i => $item ) { ?>
+                                <label class="catalog__input">
+                                    <input type="radio" name="length<?php echo $result; ?>"
+                                           value="<?php echo $item['size']; ?>" <?php if ( $i == 0 ) {
+										echo 'checked="checked"';
+									} ?>>
+                                    <div class="catalog__input__label">
+                                        <span><?php echo $item['size']; ?>м</span>
+                                    </div>
+                                </label>
+							<?php } ?>
+
+                        </div>
+
+                        <div class="catalog__parameter">
+                            <div class="catalog__parameter-name">
+                                <span>Шаг:</span>
+                            </div>
+
+							<?php foreach ( $product_step_list as $j => $item ) { ?>
+                                <label class="catalog__input">
+                                    <input type="radio" name="interval<?php echo $result; ?>"
+                                           value="1" <?php if ( $j == 0 ) {
+										echo 'checked="checked"';
+									} ?>>
+                                    <div class="catalog__input__label">
+                                        <span><?php echo $item['size']; ?>м</span>
+                                    </div>
+                                </label>
+							<?php } ?>
+
+                        </div>
+
+                        <div class="catalog__card__bottom catalog__card__bottom_red">
+                            <div class="catalog__card__price catalog__card__price--old small animated faster pulse">
+
+                            </div>
+                            <div class="my-3 my-3-1">
+                                <button type="button" data-bs-toggle="modal" class="pulse" data-bs-target="#saleModal">
+                                    Рассрочек временно НЕТ!
+                                </button>
+                            </div>
+                        </div>
+                        <div class="catalog__card__bottom">
+                            <div class="catalog__card__price">
+                                <span class="calculator-price" data-from="911">911</span>
+                                руб.
+                            </div>
+                            <div class="my-3">
+                                <!-- Trigger/Open The Modal -->
+                                <button class="myBtn" type="button" data-bs-toggle="modal" data-bs-target="#saleModal">
+                                    Подробнее
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- The Modal -->
+            <div id="saleModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+
+                    <div class="modal__title">
+                        <b>Оставьте заявку и получите <br>
+                            <span class="price-value" style="font-size: 27px;">ПОДАРОК</span> к своей теплице!</b></div>
+                    <hr>
+                    <div class="fw-bold fs-3">
+                        <a href="tel:+375297427325" class="phone_link">
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>'/assets/img/logo_mts_64.jpeg"
+                                 class="img-fluid me-3" alt="mts" width="32">+375 (29) 742-73-25
+                        </a>
+                    </div>
+
+					<?php echo do_shortcode( '[contact-form-7 id="323" title="Карточка товара"]' ); ?>
+                </div>
+            </div>
+
+			<?php
+			return ob_get_clean();
+		}
+	}
+
+	new VcZShProduct();
+
+}

@@ -1,0 +1,333 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Arsenal:wght@400;700&display=swap');
+
+.card-item {
+    position: relative;
+    font-family: 'Arsenal', sans-serif;
+    transition: transform .4s ease;
+}
+
+.card-item:hover {
+    transform: translateY(-25px)
+}
+
+.card-item:hover .catalog__card>.card-body {
+    background: #fff;
+    border: 1px solid #dce0e0;
+    box-shadow: 0 40px 80px 0 #e6f0f5
+}
+
+.catalog__card__bottom {
+    align-items: center;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.catalog__card__bottom.catalog__card__bottom_red {
+    justify-content: flex-end;
+}
+
+.catalog__card__bottom button {
+    background: linear-gradient(180deg,#83b94c 0,#63a52d);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px 0 rgba(100,180,50,.5);
+    color: #fff;
+    font-size: 19px;
+    height: 60px;
+    line-height: 1;
+    padding: 20px 40px;
+    text-align: center;
+    transition: background .4s ease,box-shadow .4s ease
+}
+
+.catalog__card__bottom button:hover {
+    background: linear-gradient(180deg,#8fc94c 0,#73b92d);
+    box-shadow: 0 15px 30px 0 rgba(100,180,50,.4)
+}
+
+.catalog__card-top {
+    margin-bottom: 20px;
+    width: 100%
+}
+
+.catalog__card-top img {
+    width: 100%
+}
+
+.catalog__parameter {
+    margin-bottom: 15px
+}
+
+.catalog__parameter .catalog__parameter-name {
+    color: #333;
+    font-size: 17px;
+    margin-bottom: 15px
+}
+
+.catalog__parameter label {
+    display: inline-block;
+}
+
+.catalog__input {
+    cursor: pointer;
+    min-width: 20%;
+    position: relative;
+    text-align: center
+}
+
+.catalog__input+.catalog__input {
+    margin-left: 13px
+}
+
+.catalog__input>input {
+    opacity: 0;
+    position: absolute;
+    z-index: -1
+}
+
+.catalog__input .catalog__input__label {
+    border-radius: 6px;
+    color: #645050;
+    display: inline-block;
+    font-size: 17px;
+    line-height: 25px;
+    padding: 3px 11px;
+    transition: color .4s ease,background .4s ease,box-shadow .4s ease;
+    width: 100%
+}
+
+.catalog__input .catalog__input__label span {
+    border-bottom: 1px dashed rgba(100,80,80,.3)
+}
+
+.catalog__input>input:checked~.catalog__input__label {
+    background: #f7f4f4;
+    box-shadow: inset 0 3px 7px 0 rgba(70,75,75,.3);
+    color: #960f19;
+    cursor: default
+}
+
+.catalog__card__price--old s {
+    font-size: 22px
+}
+
+.card-body {
+    border: 1px solid transparent;
+    border-radius: 25px;
+    padding: 20px;
+    transition: box-shadow .4s,border .4s
+}
+
+.card-body .collapse.show~div,.card-body .collapsing~div {
+    display: none
+}
+
+.card-title {
+    color: #140a00;
+    font-family: 'Arsenal', sans-serif;
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 5px;
+    transition: color .4s ease
+}
+
+.card-label {
+    border: 1px solid #ff7f00;
+    border-radius: 5px;
+    color: #ff7f00;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    padding: 2px 8px;
+    text-transform: uppercase;
+    vertical-align: middle
+}
+
+.card-text {
+    color: #140a00;
+    font-size: 17px;
+    line-height: 22px;
+    margin-bottom: 20px
+}
+
+.card-moreDetails {
+    text-align: center
+}
+
+.card-moreDetails button {
+    background-color: transparent;
+    border-bottom: 1px dashed rgba(100,80,80,.3);
+    color: #140a00;
+    font-size: 17px;
+    line-height: 22px;
+    margin: 20px 0
+}
+
+.card-info-characteristics {
+    margin-bottom: 20px
+}
+
+.card-info-characteristics-item {
+    align-items: center;
+    display: flex;
+    margin-bottom: 5px
+}
+
+.card-info-characteristics-item-icon {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-right: 5px;
+    text-align: center;
+    width: 24px
+}
+
+.card-info-characteristics-item-icon .fa-arrows-alt-h,
+.card-info-characteristics-item-icon .fa-arrows-alt-v,
+.card-info-characteristics-item-icon .fa-igloo {
+    height: 1.5rem;
+    color: #979797;
+    font-size: 22px;
+}
+
+.card-info-carcass {
+    color: #140a00;
+    font-size: 17px;
+    margin-bottom: 20px
+}
+
+.calculator-price {
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 1
+}
+
+.modal-container {
+    display: flex;
+    padding-bottom: 100px;
+    position: relative
+}
+
+@media screen and (max-width: 991px) {
+    .modal-container {
+        flex-direction:column;
+        padding-bottom: 0
+    }
+}
+
+.card__modal-left {
+    align-items: flex-start;
+    display: flex;
+    max-height: 500px;
+    width: 50%
+}
+
+@media screen and (max-width: 991px) {
+    .card__modal-left {
+        display:block;
+        margin-bottom: 20px;
+        max-height: none;
+        width: 100%
+    }
+}
+
+
+.catalog__card__bottom_red button {
+    background: #960a19;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px 0 rgb(150 10 25 / 50%);
+    color: #fff;
+    font-size: 15px;
+    height: 40px;
+    line-height: 1;
+    padding: 10px 12px;
+    font-weight: bold;
+    text-align: center;
+    transition: background .4s ease, box-shadow .4s ease;
+}
+
+.catalog__card__bottom_red button:hover {
+    background: linear-gradient(50deg, #964048 0, #963e46);
+    box-shadow: 0 7px 15px 0 rgb(180 50 67 / 40%);
+}
+
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 600px;
+    font-family: 'Arsenal', sans-serif;
+    font-size: 27px;
+}
+
+.modal__title {
+    font-size: 32px;
+    text-align: center;
+}
+
+.modal-content a.phone_link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    font-size: 32px;
+    font-weight: bold;
+    color: #000;
+}
+
+.modal-content a.phone_link img {
+    margin-right: 1rem;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.price-value {
+    color: #960a19;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 86px;
+    margin-bottom: 20px;
+    position: relative;
+    text-shadow: 0 6px 15px rgb(150 10 25 / 30%);
+}
+
+.wpcf7-spinner {
+    display: none;
+}
