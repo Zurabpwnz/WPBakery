@@ -330,6 +330,18 @@ if ( ! class_exists( 'VcZShProduct' ) ) {
 				'product_price'        => '',
 				'product_length_list'  => '',
 				'product_step_list'    => '',
+				'size_4_1'             => '',
+				'size_4_067'           => '',
+				'size_4_05'            => '',
+				'size_6_1'             => '',
+				'size_6_067'           => '',
+				'size_6_05'            => '',
+				'size_8_1'             => '',
+				'size_8_067'           => '',
+				'size_8_05'            => '',
+				'size_10_1'            => '',
+				'size_10_067'          => '',
+				'size_10_05'           => '',
 
 				'extra_class' => '',
 				'element_id'  => ''
@@ -350,6 +362,21 @@ if ( ! class_exists( 'VcZShProduct' ) ) {
 			$product_varanty      = esc_html( $atts['product_varanty'] );
 			$product_length_list  = vc_param_group_parse_atts( $atts['product_length_list'] );
 			$product_step_list    = vc_param_group_parse_atts( $atts['product_step_list'] );
+			$size_4_1             = esc_html( $atts['size_4_1'] );
+			$size_4_067           = esc_html( $atts['size_4_067'] );
+			$size_4_05            = esc_html( $atts['size_4_05'] );
+
+			$size_6_1             = esc_html( $atts['size_6_1'] );
+			$size_6_067           = esc_html( $atts['size_6_067'] );
+			$size_6_05            = esc_html( $atts['size_6_05'] );
+
+			$size_8_1             = esc_html( $atts['size_8_1'] );
+			$size_8_067           = esc_html( $atts['size_8_067'] );
+			$size_8_05            = esc_html( $atts['size_8_05'] );
+
+			$size_10_1             = esc_html( $atts['size_10_1'] );
+			$size_10_067           = esc_html( $atts['size_10_067'] );
+			$size_10_05            = esc_html( $atts['size_10_05'] );
 
 			//Class and Id
 			$extra_class = esc_attr( $atts['extra_class'] );
@@ -420,7 +447,7 @@ if ( ! class_exists( 'VcZShProduct' ) ) {
 
                             </div>
                         </div>
-                        <div class="catalog__parameter">
+                        <div class="catalog__parameter catalog__parameter--length">
                             <div class="catalog__parameter-name">
                                 <span>Длина:</span>
                             </div>
@@ -439,7 +466,7 @@ if ( ! class_exists( 'VcZShProduct' ) ) {
 
                         </div>
 
-                        <div class="catalog__parameter">
+                        <div class="catalog__parameter catalog__parameter--step">
                             <div class="catalog__parameter-name">
                                 <span>Шаг:</span>
                             </div>
@@ -447,7 +474,7 @@ if ( ! class_exists( 'VcZShProduct' ) ) {
 							<?php foreach ( $product_step_list as $j => $item ) { ?>
                                 <label class="catalog__input">
                                     <input type="radio" name="interval<?php echo $result; ?>"
-                                           value="1" <?php if ( $j == 0 ) {
+                                           value="<?php echo $item['size']; ?>" <?php if ( $j == 0 ) {
 										echo 'checked="checked"';
 									} ?>>
                                     <div class="catalog__input__label">
@@ -470,7 +497,22 @@ if ( ! class_exists( 'VcZShProduct' ) ) {
                         </div>
                         <div class="catalog__card__bottom">
                             <div class="catalog__card__price">
-                                <span class="calculator-price" data-from="911">911</span>
+                                <span class="calculator-price active" id="size_4_1"><?php echo $size_4_1; ?></span>
+                                <span class="calculator-price" id="size_4_067"><?php echo $size_4_067; ?></span>
+                                <span class="calculator-price" id="size_4_05"><?php echo $size_4_05; ?></span>
+
+                                <span class="calculator-price" id="size_6_1"><?php echo $size_6_1; ?></span>
+                                <span class="calculator-price" id="size_6_067"><?php echo $size_6_067; ?></span>
+                                <span class="calculator-price" id="size_6_05"><?php echo $size_6_05; ?></span>
+
+                                <span class="calculator-price" id="size_8_1"><?php echo $size_8_1; ?></span>
+                                <span class="calculator-price" id="size_8_067"><?php echo $size_8_067; ?></span>
+                                <span class="calculator-price" id="size_8_05"><?php echo $size_8_05; ?></span>
+
+                                <span class="calculator-price" id="size_10_1"><?php echo $size_10_1; ?></span>
+                                <span class="calculator-price" id="size_10_067"><?php echo $size_10_067; ?></span>
+                                <span class="calculator-price" id="size_10_05"><?php echo $size_10_05; ?></span>
+
                                 руб.
                             </div>
                             <div class="my-3">

@@ -52,31 +52,136 @@
     });
 
 
+    let activeLengthVal = jQuery('.catalog__parameter--length input[type="radio"]:checked').val();
+    let activeStepVal = jQuery('.catalog__parameter--step input[type="radio"]:checked').val();
+
+    console.log(activeLengthVal);
+    console.log(activeStepVal);
+
+    jQuery('.catalog__parameter--length input[type="radio"]').on('change', function () {
+        jQuery(this).parents('.card-item').find('.calculator-price').removeClass('active');
+
+        activeLengthVal = jQuery(this).val();
+
+        console.log(activeLengthVal);
+        console.log(activeStepVal);
+
+        if ("4" == activeLengthVal && "1" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_4_1').addClass('active');
+        }
+        if ("6" == activeLengthVal && "1" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_6_1').addClass('active');
+        }
+        if ("8" == activeLengthVal && "1" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_8_1').addClass('active');
+        }
+        if ("10" == activeLengthVal && "1" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_10_1').addClass('active');
+        }
 
 
+        if ("4" == activeLengthVal && "0,67" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_4_067').addClass('active');
+        }
+        if ("6" == activeLengthVal && "0,67" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_6_067').addClass('active');
+        }
+        if ("8" == activeLengthVal && "0,67" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_8_067').addClass('active');
+        }
+        if ("10" == activeLengthVal && "0,67" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_10_067').addClass('active');
+        }
+
+
+        if ("4" == activeLengthVal && "0,50" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_4_05').addClass('active');
+        }
+        if ("6" == activeLengthVal && "0,50" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_6_05').addClass('active');
+        }
+        if ("8" == activeLengthVal && "0,50" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_8_05').addClass('active');
+        }
+        if ("10" == activeLengthVal && "0,50" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_10_05').addClass('active');
+        }
+    });
+
+    jQuery('.catalog__parameter--step input[type="radio"]').on('change', function () {
+        jQuery(this).parents('.card-item').find('.calculator-price').removeClass('active');
+
+        activeStepVal = jQuery(this).val();
+
+        console.log(activeLengthVal);
+        console.log(activeStepVal);
+
+        if ("4" == activeLengthVal && "1" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_4_1').addClass('active');
+        }
+        if ("6" == activeLengthVal && "1" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_6_1').addClass('active');
+        }
+        if ("8" == activeLengthVal && "1" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_8_1').addClass('active');
+        }
+        if ("10" == activeLengthVal && "1" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_10_1').addClass('active');
+        }
+
+
+        if ("4" == activeLengthVal && "0,67" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_4_067').addClass('active');
+        }
+        if ("6" == activeLengthVal && "0,67" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_6_067').addClass('active');
+        }
+        if ("8" == activeLengthVal && "0,67" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_8_067').addClass('active');
+        }
+        if ("10" == activeLengthVal && "0,67" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_10_067').addClass('active');
+        }
+
+
+        if ("4" == activeLengthVal && "0,50" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_4_05').addClass('active');
+        }
+        if ("6" == activeLengthVal && "0,50" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_6_05').addClass('active');
+        }
+        if ("8" == activeLengthVal && "0,50" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_8_05').addClass('active');
+        }
+        if ("10" == activeLengthVal && "0,50" == activeStepVal) {
+            jQuery(this).parents('.card-item').find('#size_10_05').addClass('active');
+        }
+    });
 
 
     // счетчик
 
-    (function(){
+    (function () {
 
         let counter = document.querySelectorAll('.counter');
         let limit = 0; // Переменная, чтобы останавливать функцию, когда всё запустится.
-        window.addEventListener('scroll', function(){
-            if( limit == counter.length ){ return; }
+        window.addEventListener('scroll', function () {
+            if (limit == counter.length) {
+                return;
+            }
 
-            for(let i = 0; i < counter.length; i++){
+            for (let i = 0; i < counter.length; i++) {
                 let pos = counter[i].getBoundingClientRect().top; //Позиция блока, считая сверху окна
                 let win = window.innerHeight - 40; // На 40 пикселей меньше, чем высота окна
-                if( pos < win && counter[i].dataset.stop === "0" ){
+                if (pos < win && counter[i].dataset.stop == "0") {
                     counter[i].dataset.stop = 1; // Останавливаем перезапуск счета в этом блоке
                     let x = 0;
                     limit++; // Счетчик будет запущен, увеличиваем переменную на 1
-                    let int = setInterval(function(){
+                    let int = setInterval(function () {
                         // Раз в 60 миллисекунд будет прибавляться 50-я часть нужного числа
-                        x = x + Math.ceil( counter[i].dataset.to / 50 );
+                        x = x + Math.ceil(counter[i].dataset.to / 50);
                         counter[i].innerText = x;
-                        if( x > counter[i].dataset.to ){
+                        if (x > counter[i].dataset.to) {
                             //Как только досчитали - стираем интервал.
                             counter[i].innerText = counter[i].dataset.to;
                             clearInterval(int);
@@ -86,16 +191,16 @@
             }
         });
 
-    // .counter {
-    //         width: 200px;
-    //         margin: 400px 0 200px 0;
-    //         border: 2px solid orange;
-    //         font-size: 30px; color: #045acf;
-    //         text-align: center;
-    //     }
-    //     <div class="counter" data-to="26" data-stop="0">0</div>
-    //     <div class="counter" data-to="1000" data-stop="0">0</div>
-    //     <div class="counter" data-to="2500000" data-stop="0">0</div>
+        // .counter {
+        //         width: 200px;
+        //         margin: 400px 0 200px 0;
+        //         border: 2px solid orange;
+        //         font-size: 30px; color: #045acf;
+        //         text-align: center;
+        //     }
+        //     <div class="counter" data-to="26" data-stop="0">0</div>
+        //     <div class="counter" data-to="1000" data-stop="0">0</div>
+        //     <div class="counter" data-to="2500000" data-stop="0">0</div>
 
     })();
 })(jQuery);
