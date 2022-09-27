@@ -551,9 +551,7 @@ if ( ! class_exists( 'VcZShProduct' ) ) {
 						</div>
 
 						<div class="catalog__card__bottom catalog__card__bottom_red">
-							<div class="catalog__card__price catalog__card__price--old small animated faster pulse">
-
-							</div>
+							<div class="catalog__card__price catalog__card__price--old small animated faster pulse"></div>
 							<div class="my-3 my-3-1">
 								<button type="button" data-bs-toggle="modal" class="pulse" data-bs-target="#saleModal">
 									Рассрочек временно НЕТ!
