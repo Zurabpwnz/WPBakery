@@ -1,2 +1,2 @@
-# Shyvarbidze.pro - WPBakery
+# Shyvarbidze.pro - WPBakery custom blocks
  
