@@ -4,12 +4,13 @@
  *
  * Remove some of the default WPBakery (Visual Composer) functions
  *
- * @category   Wordpress
  * @since      Class available since Release 1.0.0
+ * @category   Wordpress
  */
 
 
-if ( ! defined( 'ABSPATH' ) ) { exit; // Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
 }
 if ( ! class_exists( 'clean_visual_composer' ) ) {
 	class clean_visual_composer {
@@ -19,7 +20,7 @@ if ( ! class_exists( 'clean_visual_composer' ) ) {
 		 **/
 		public function __construct() {
 			// Remove default VC elements
-			add_action( 'init', array( $this, 'setup_clean_vc' ) );
+			add_action( 'init', [ $this, 'setup_clean_vc' ] );
 		}
 
 		/**
@@ -73,5 +74,6 @@ if ( ! class_exists( 'clean_visual_composer' ) ) {
 // 			vc_remove_element( 'vc_wp_rss' );
 		}
 	}
+
 	new clean_visual_composer();
 }

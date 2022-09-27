@@ -511,10 +511,11 @@ if ( ! class_exists( 'VcZShProduct' ) ) {
 
 							</div>
 						</div>
+
+						<div class="catalog__parameter-name">
+							<strong>Длина:</strong>
+						</div>
 						<div class="catalog__parameter catalog__parameter--length">
-							<div class="catalog__parameter-name">
-								<span>Длина:</span>
-							</div>
 
 							<?php foreach ( $product_length_list as $i => $item ) { ?>
 								<label class="catalog__input">
@@ -530,10 +531,10 @@ if ( ! class_exists( 'VcZShProduct' ) ) {
 
 						</div>
 
+						<div class="catalog__parameter-name">
+							<strong>Шаг:</strong>
+						</div>
 						<div class="catalog__parameter catalog__parameter--step">
-							<div class="catalog__parameter-name">
-								<span>Шаг:</span>
-							</div>
 
 							<?php foreach ( $product_step_list as $j => $item ) { ?>
 								<label class="catalog__input">
