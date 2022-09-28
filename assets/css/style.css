@@ -141,8 +141,8 @@
 .card-title {
 	margin-bottom: 1rem !important;
 	color: #140a00;
-	font-family: 'Arsenal', sans-serif;
-	font-size: 52px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 40px;
 	font-weight: 400;
 	line-height: 1;
 	margin-bottom: 5px;
@@ -151,7 +151,7 @@
 
 @media screen and (max-width: 991px) {
 	.card-title {
-		font-size: 33px;
+		font-size: 28px;
 	}
 }
 
@@ -205,13 +205,15 @@
 	justify-content: center;
 	margin-right: 5px;
 	text-align: center;
-	width: 24px
+	min-width: 24px
 }
 
 .card-info-characteristics-item-icon .fa-arrows-alt-h,
 .card-info-characteristics-item-icon .fa-arrows-alt-v,
 .card-info-characteristics-item-icon .fa-igloo {
+	min-width: 24px;
 	height: 1.5rem;
+	margin-right: 10px;
 	color: #979797;
 	font-size: 22px;
 }
@@ -312,7 +314,7 @@
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
 	max-width: 600px;
-	font-family: 'Arsenal', sans-serif;
+	font-family: Verdana, Geneva, sans-serif;
 	font-size: 27px;
 }
 

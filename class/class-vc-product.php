@@ -458,6 +458,7 @@ if ( ! class_exists( 'VcZShProduct' ) ) {
 												 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 												 data-fa-i2svg=""><path fill="currentColor"
 																		d="M320 33.9c-10.5-1.2-21.2-1.9-32-1.9-99.8 0-187.8 50.8-239.4 128H320V33.9zM96 192H30.3C11.1 230.6 0 274 0 320h96V192zM352 39.4V160h175.4C487.2 99.9 424.8 55.9 352 39.4zM480 320h96c0-46-11.1-89.4-30.3-128H480v128zm-64 64v96h128c17.7 0 32-14.3 32-32v-96H411.5c2.6 10.3 4.5 20.9 4.5 32zm32-192H128v128h49.8c22.2-38.1 63-64 110.2-64s88 25.9 110.2 64H448V192zM0 448c0 17.7 14.3 32 32 32h128v-96c0-11.1 1.9-21.7 4.5-32H0v96zm288-160c-53 0-96 43-96 96v96h192v-96c0-53-43-96-96-96z"></path></svg>
+												<!-- <i class="fas fa-igloo"></i> Font Awesome fontawesome.com --></span>
 									<?php if ( $product_form ) { ?>
 										<span>Форма: <?php echo $product_form; ?></span>
 									<?php } ?>
@@ -469,6 +470,7 @@ if ( ! class_exists( 'VcZShProduct' ) ) {
 													 role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
 													 data-fa-i2svg=""><path fill="currentColor"
 																			d="M377.941 169.941V216H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.568 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296h243.882v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.568 0-33.941l-86.059-86.059c-15.119-15.12-40.971-4.412-40.971 16.97z"></path></svg>
+												<!-- <i class="fas fa-arrows-alt-h"></i> Font Awesome fontawesome.com -->
                                             </span>
 									<?php if ( $product_form ) { ?>
 										<span>Ширина: <?php echo $product_weight; ?>м</span>
@@ -481,6 +483,7 @@ if ( ! class_exists( 'VcZShProduct' ) ) {
 													 role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"
 													 data-fa-i2svg=""><path fill="currentColor"
 																			d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"></path></svg>
+												<!-- <i class="fas fa-arrows-alt-v"></i> Font Awesome fontawesome.com -->
                                             </span>
 									<span>Высота: <?php echo $product_height; ?>м</span>
 								</div>
