@@ -3,7 +3,7 @@
 Plugin Name: Shyvarbidze Pro modules for WPBakery
 Description: Theme modules for WPBakery
 Author: Zurab Shyvarbdize
-Version: 1.0.6
+Version: 1.0.8
 Author URI: https://shyvarbidze.pro/
 */
 
