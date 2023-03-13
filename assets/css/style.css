@@ -459,11 +459,6 @@
 	display: none;
 }
 
-<<<<<<< HEAD
-.wpcf7-submit {
-	display: block;
-	margin: 0 auto;
-=======
 .wpcf7-form .wpcf7-submit {
 	display: block !important;
 	margin: 0 auto;
@@ -484,5 +479,4 @@
 	.catalog__card__bottom.catalog__card__bottom_red {
 		order: 2;
 	}
->>>>>>> e9f9db5 (add material type)
 }
