@@ -313,7 +313,6 @@
 
 @media screen and (max-width: 991px) {
 	.calculator-price {
-		margin: 1rem 0;
 		font-size: 30px;
 	}
 }
